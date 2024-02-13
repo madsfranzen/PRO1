@@ -3,7 +3,7 @@ public class Stars {
 //        exA(10);
 //        System.out.println();
 
-        exD(10);
+        exDDD(10);
         System.out.println();
     }
 
@@ -73,7 +73,7 @@ public class Stars {
         }
     }
 
-    public static void exD(int rowCount) {
+    public static void exDDD(int rowCount) {
 
         int cap = 0;
         for (int row = 1; row <= rowCount; row++) {
