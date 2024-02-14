@@ -7,7 +7,6 @@ public class OPG2d {
         int count = scan.nextInt();
         System.out.println("Input " + count + " numbers.");
 
-
         int previousNum = 0;
         int repeats = 0;
         for (int i = 0; i < count; i++) {
@@ -20,7 +19,7 @@ public class OPG2d {
             previousNum = num;
         }
 
-        // Clean up from loop
+        // Clean up from multiplication in loop
         repeats /= 10;
         System.out.println(repeats);
     }

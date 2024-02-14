@@ -1,10 +1,7 @@
 public class Stars {
     public static void main(String[] args) {
-//        exA(10);
-//        System.out.println();
+        exB(10);
 
-        exDDD(10);
-        System.out.println();
     }
 
     public static void exA(int rowCount) {
@@ -33,7 +30,6 @@ public class Stars {
 
             // print row number
             System.out.printf("%2d: ", row);
-
             int starCount = row;
 
             // print dashes
@@ -46,7 +42,6 @@ public class Stars {
             for (int i = 1; i <= starCount; i++) {
                 System.out.print('*');
             }
-
 
             // go to next line
             System.out.println();
@@ -73,7 +68,7 @@ public class Stars {
         }
     }
 
-    public static void exDDD(int rowCount) {
+    public static void exD(int rowCount) {
 
         int cap = 0;
         for (int row = 1; row <= rowCount; row++) {

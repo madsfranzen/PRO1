@@ -11,15 +11,14 @@ public class OPG2c {
         int biggestNum = 0;
         int biggestNumCount = 0;
         for (int i = 0; i < count; i++) {
-            
+
             System.out.println("Number " + (i + 1) + ":");
             int num = scan.nextInt();
 
             if (num > biggestNum) {
                 biggestNum = num;
                 biggestNumCount = 0;
-            }
-            if (num == biggestNum) biggestNumCount++;
+            } else if (num == biggestNum) biggestNumCount++;
         }
         System.out.println("Biggest Number Is: " + biggestNum);
         System.out.println("It occurs " + biggestNumCount + " times.");
