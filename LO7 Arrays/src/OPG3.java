@@ -7,6 +7,8 @@ public class OPG3 {
         int[] array1 = {4, 6, 7, 2, 3};
         int[] array2 = {4, 6, 8, 2, 6};
         int[] sum = sumArrays(array1, array2);
+
+
         System.out.println(Arrays.toString(sum));
 
         // Arrays Not Equal
