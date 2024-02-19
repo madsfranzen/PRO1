@@ -58,7 +58,6 @@ public class OPG6 {
         return isAscending;
     }
 
-
     // A method that shifts all elements in the array to the right (to an index one higher).
     // The last element is shifted to the first index in the array.
     public static int[] shiftArray(int[] a) {
