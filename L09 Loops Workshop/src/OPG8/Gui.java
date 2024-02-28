@@ -35,8 +35,8 @@ public class Gui extends Application {
             Line line = new Line(x, y1, x, y2);
             pane.getChildren().add(line);
             x += 16;
-            y2 -= 4;
             y1 -= 12;
+            y2 -= 4;
         }
     }
 }
