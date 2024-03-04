@@ -18,7 +18,7 @@ public class WeatherStation {
                 pressure / 14.503773773);
         return weatherStation3;
     }
-    
+
     public double getTemperature() {
         return temperature;
     }

@@ -1,17 +1,14 @@
 package OPG1ex98;
 
 public class Fan {
-    private final int SLOW = 1;
-    private final int MEDIUM = 2;
-    private final int FAST = 3;
+    private static final int SLOW = 1;
+    private static final int MEDIUM = 2;
+    private static final int FAST = 3;
 
-    private int speed = 1;
+    private int speed = SLOW;
     private boolean power = false;
     private double radius = 5;
     private String color = "blue";
-
-    public Fan() {
-    }
 
     public Fan(int speed, boolean power, double radius, String color) {
         this.speed = speed;

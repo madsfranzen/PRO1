@@ -4,9 +4,9 @@ public class OPG1ex101 {
     public static void main(String[] args) {
         WeatherStation weatherStation1 = new WeatherStation();
         WeatherStation weatherStation2 = new WeatherStation(35, 0.5);
-        WeatherStation ws = WeatherStation.weatherStationFromImperial(68, 21);
+        WeatherStation ws3 = WeatherStation.weatherStationFromImperial(68, 21);
 
-        System.out.println(ws.getPressure());
+        System.out.println(ws3.getPressure());
 
     }
 }
