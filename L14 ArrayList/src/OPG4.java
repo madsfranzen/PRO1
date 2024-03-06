@@ -63,8 +63,7 @@ public class OPG4 {
     // The last element is shifted to the first index in the ArrayList (assume size >= 1).
     // Example: {1, 4, 9, 16, 25} is changed to {25, 1, 4, 9, 16}
     public static ArrayList<Integer> shift(ArrayList<Integer> list) {
-        int temp = list.removeLast();
-        list.addFirst(temp);
+        list.addFirst(list.removeLast());
         return list;
     }
 
@@ -75,6 +74,7 @@ public class OPG4 {
         for (int number : list) {
             if (list.indexOf(number) != list.lastIndexOf(number)) {
                 hasDoublets = true;
+                return hasDoublets;
             }
         }
         return hasDoublets;

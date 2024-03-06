@@ -3,8 +3,8 @@ package OPG3;
 import java.util.ArrayList;
 
 public class Team {
+    public ArrayList<Player> players;
     private String name;
-    private ArrayList<Player> players;
 
     public Team(String name) {
         this.name = name;

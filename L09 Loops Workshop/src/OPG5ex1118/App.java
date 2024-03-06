@@ -1,4 +1,4 @@
-package OPG5;
+package OPG5ex1118;
 
 public class App {
     public static void main(String[] args) {

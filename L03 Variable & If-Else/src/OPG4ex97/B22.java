@@ -1,4 +1,4 @@
-package OPG4;
+package OPG4ex97;
 
 import java.util.Scanner;
 
@@ -12,7 +12,7 @@ public class B22 {
         System.out.println("Enter Annual Interest Rate: ");
         double annualInterestRate = scan.nextDouble();
 
-        double interest = balance * (annualInterestRate/1200);
+        double interest = balance * (annualInterestRate / 1200);
 
         System.out.println("Interest for next month is: $" + interest);
 

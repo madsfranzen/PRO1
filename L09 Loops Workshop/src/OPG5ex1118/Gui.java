@@ -1,9 +1,8 @@
-package OPG5;
+package OPG5ex1118;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
 

@@ -1,4 +1,4 @@
-package OPG4;
+package OPG4ex97;
 
 public class App {
     public static void main(String[] args) {

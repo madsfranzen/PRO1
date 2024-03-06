@@ -19,6 +19,7 @@ public class OPG3 {
         elves.addPlayer(elrond);
         elrond.setScore(5);
 
+
         hobbits.printPlayers();
         System.out.println(hobbits.calcAverage());
         System.out.println(hobbits.calcTotalScore());
@@ -28,4 +29,6 @@ public class OPG3 {
         System.out.println(elves.calcOldPlayerScore(4000));
         System.out.println(elves.bestPlayerNames());
     }
+
+
 }

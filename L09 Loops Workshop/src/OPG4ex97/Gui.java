@@ -1,4 +1,4 @@
-package OPG4;
+package OPG4ex97;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -6,7 +6,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 

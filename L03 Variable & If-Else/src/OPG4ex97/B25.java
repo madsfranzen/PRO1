@@ -1,4 +1,4 @@
-package OPG4;
+package OPG4ex97;
 
 import java.util.Scanner;
 
