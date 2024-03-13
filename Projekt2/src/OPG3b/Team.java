@@ -92,14 +92,18 @@ public class Team {
     }
 
     public void printTeam() {
-        System.out.println("*********** " + name + " ***********");
-        System.out.println("*      Name |    GA |  CA  *");
-        System.out.println("* ------------------------ *");
-        for (Student student : students) {
-            System.out.printf("* %9s | %5.2f | %2d   *\n",
-                    student.getName(),
-                    student.getAverageGrade(),
-                    student.getCorrectAnswerCount());
+        System.out.println("*********** " + name + " ************");
+        if (students.size() == 0) {
+            System.out.println("*   No students in team    *");
+        } else {
+            System.out.println("*      Name |    GA |  CA  *");
+            System.out.println("* ------------------------ *");
+            for (Student student : students) {
+                System.out.printf("* %9s | %5.2f | %2d   *\n",
+                        student.getName(),
+                        student.getAverageGrade(),
+                        student.getCorrectAnswerCount());
+            }
         }
         System.out.println("****************************\n");
     }

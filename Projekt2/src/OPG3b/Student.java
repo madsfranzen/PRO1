@@ -21,9 +21,9 @@ public class Student {
     @Override
     public String toString() {
         return String.format("========= %5s ========= \n" +
-                " Active | GA  |  CA | \n " +
-                "%7s | %6.2f |%2d | \n" +
-                "----------------------", name, active, getAverageGrade(), getCorrectAnswerCount());
+                "| Active |   GA   |  CA  | \n " +
+                "|%6s | %6.2f |%5d | \n" +
+                "------------------------", name, active, getAverageGrade(), getCorrectAnswerCount());
     }
 
     public String getName() {

@@ -53,7 +53,7 @@ public class Team {
     public Student[] getHighScoreStudents(double minAverage) {
         int studentCount = 0;
         for (Student student : students) {
-            if (student.getAverageGrade() > minAverage) {
+            if (student.getAverageGrade() >= minAverage) {
                 studentCount++;
             }
         }
@@ -70,6 +70,7 @@ public class Team {
 
     public int[] getTotalCorrectAnswerCount() {
         int[] correctAnswers = new int[students.size()];
+
         for (int i = 0; i < correctAnswers.length; i++) {
             correctAnswers[i] = students.get(i).getCorrectAnswerCount();
         }

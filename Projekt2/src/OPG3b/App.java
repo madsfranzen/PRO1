@@ -7,20 +7,19 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-
         ArrayList<Team> teams = new ArrayList<>();
         boolean running = true;
         while (running) {
             printMenu();
             int input = getUserInputInteger();
             switch (input) {
-                case 1 -> teams.add(createTeam());     // Create Team
-                case 2 -> createStudent(teams);        // Create Student
-                case 3 -> removeStudent(teams);        // Remove Student
-                case 4 -> printStudentInfo(teams);     // Print Student
-                case 5 -> printTeamInfo(teams);        // Print Team
-                case 6 -> printAllTeamsInfo(teams);    // Print all Teams
-                case 7 -> running = false;             // Exit
+                case 1 -> teams.add(createTeam(teams));  // Create Team
+                case 2 -> createStudent(teams);          // Create Student
+                case 3 -> removeStudent(teams);          // Remove Student
+                case 4 -> printStudentInfo(teams);       // Print Student
+                case 5 -> printTeamInfo(teams);          // Print Team
+                case 6 -> printAllTeamsInfo(teams);      // Print all Teams
+                case 7 -> running = false;               // Exit
                 default -> System.out.println("Please input a valid number.");
             }
         }
@@ -58,22 +57,30 @@ public class App {
     }
 
     public static void printAllTeamsInfo(ArrayList<Team> teams) {
-        for (Team team : teams) {
-            team.printTeam();
+        if (teams.size() == 0) {
+            System.out.println("No teams. Please create a team.");
+        } else {
+            for (Team team : teams) {
+                team.printTeam();
+            }
         }
     }
 
     public static void printStudentInfo(ArrayList<Team> teams) {
-        printTeams(teams);
-        System.out.println("Team's name: ");
-        Team team = findTeam(teams);
-        if (team.getStudents().size() == 0) {
-            System.out.println("No students in Team.");
+        if (teams.size() == 0) {
+            System.out.println("No teams. Please create a team.");
+        } else {
+            printTeams(teams);
+            System.out.println("Team's name: ");
+            Team team = findTeam(teams);
+            if (team.getStudents().size() == 0) {
+                System.out.println("No students in Team.");
+            }
+            printStudents(team);
+            System.out.println("Name of student: ");
+            Student student = findStudent(team);
+            System.out.println(student);
         }
-        printStudents(team);
-        System.out.println("Name of student: ");
-        Student student = findStudent(team);
-        System.out.println(student);
     }
 
     public static void printStudents(Team team) {
@@ -83,15 +90,20 @@ public class App {
         }
         System.out.print(" |");
         System.out.println("");
+
     }
 
     public static void printTeams(ArrayList<Team> teams) {
-        System.out.println("Available teams: ");
-        for (Team team : teams) {
-            System.out.print("| " + team.getName());
+        if (teams.size() == 0) {
+            System.out.println("No teams. Please create a team.");
+        } else {
+            System.out.println("Available teams: ");
+            for (Team team : teams) {
+                System.out.print("| " + team.getName());
+            }
+            System.out.print(" |");
+            System.out.println("");
         }
-        System.out.print(" |");
-        System.out.println("");
     }
 
     public static Student findStudent(Team teams) {
@@ -118,11 +130,15 @@ public class App {
         String teamName = null;
         Team team = null;
         boolean asking = true;
+        boolean errorMessagePrinted = false;
         while (asking) {
-            teamName = scan.next();
+            errorMessagePrinted = true;
+            teamName = scan.nextLine();
             for (Team t : teams) {
                 if (!t.getName().equalsIgnoreCase(teamName)) {
-                    System.out.println("Please input valid Team Name.");
+                    if (!errorMessagePrinted) {
+                        System.out.println("Please input valid Team Name.");
+                    }
                 } else {
                     team = t;
                     asking = false;
@@ -133,10 +149,14 @@ public class App {
     }
 
     public static void printTeamInfo(ArrayList<Team> teams) {
-        printTeams(teams);
-        System.out.println("Team's name: ");
-        Team team = findTeam(teams);
-        team.printTeam();
+        if (teams.size() == 0) {
+            System.out.println("No teams. Please create a team.");
+        } else {
+            printTeams(teams);
+            System.out.println("Team's name: ");
+            Team team = findTeam(teams);
+            team.printTeam();
+        }
     }
 
     public static void createStudent(ArrayList<Team> teams) {
@@ -144,18 +164,28 @@ public class App {
             System.out.println("No Teams created. Please create a team.");
         } else {
             printTeams(teams);
+            Scanner scan = new Scanner(System.in);
             System.out.println("Name of students team: ");
             Team team = findTeam(teams);
             System.out.println("Student's name and activity status: (true/false)");
-            Scanner scan = new Scanner(System.in);
             String studentName = scan.next();
-            boolean studentActivity = scan.nextBoolean();
+            boolean isBoolean = false;
+            boolean studentActivity = false;
+            while (!isBoolean) {
+                try {
+                    studentActivity = scan.nextBoolean();
+                    isBoolean = true;
+                } catch (InputMismatchException e) {
+                    System.out.println("Please input either 'true' or 'false' for student activity.");
+                    scan.nextLine();
+                }
+            }
             System.out.println("Student's number of grades: ");
-            int numOfGrades = scan.nextInt();
+            int numOfGrades = getUserInputInteger();
             int[] grades = new int[numOfGrades];
-            System.out.println("Students " + numOfGrades + " grades: ");
             for (int i = 0; i < numOfGrades; i++) {
-                int grade = scan.nextInt();
+                System.out.println("Input students grade " + (i + 1) + ":");
+                int grade = getUserInputInteger();
                 grades[i] = grade;
             }
             Student student = new Student(studentName, studentActivity, grades);
@@ -166,11 +196,24 @@ public class App {
         }
     }
 
-    public static Team createTeam() {
+    public static Team createTeam(ArrayList<Team> teams) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Team name and room:");
         String name = scan.next();
         String room = scan.next();
+        if (teams.size() > 0) {
+            boolean uniqueTeam = false;
+            while (!uniqueTeam) {
+                for (Team team : teams) {
+                    if (team.getName().equalsIgnoreCase(name)) {
+                        System.out.println("Team already exists. Please input valid Team Name.");
+                        name = scan.next();
+                    } else {
+                        uniqueTeam = true;
+                    }
+                }
+            }
+        }
         Team team = new Team(name, room);
         System.out.println("--> Team created with name -> " + name + " and room -> " + room);
         return team;
