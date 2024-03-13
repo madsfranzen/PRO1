@@ -60,7 +60,6 @@ public class Student {
         return correctAnswers;
     }
 
-
     public char[] getAnswers() {
         return answers;
     }
