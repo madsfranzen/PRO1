@@ -35,7 +35,6 @@ public class SwimmerApp {
             System.out.println("Weekly water hours: " + tPlan.getWeeklyWaterHours());
             System.out.println("Weekly strength hours: " + tPlan.getWeeklyStrengthHours());
             System.out.println("Swimmers on training plan:");
-
             for (Swimmer swimmer : tPlan.getSwimmers()) {
                 System.out.println("Name: " + swimmer.getName());
                 System.out.println("Best lap time: " + swimmer.bestLapTime());
