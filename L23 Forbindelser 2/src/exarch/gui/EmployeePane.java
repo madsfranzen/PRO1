@@ -21,6 +21,7 @@ public class EmployeePane extends GridPane {
     private TextField txfCompany = new TextField();
     private TextField txfWage = new TextField();
     private TextField txfWeeklySalary = new TextField();
+    private TextField txfEmploymentYear = new TextField();
     private Button btnCreate = new Button("Create");
     private Button btnUpdate = new Button("Update");
     private Button btnDelete = new Button("Delete");
@@ -42,11 +43,12 @@ public class EmployeePane extends GridPane {
         Label lblWage = new Label("Hourly Wage:");
         Label lblCompany = new Label("Company:");
         Label lblWeeklySalary = new Label("Weekly Salary");
-        VBox labelBox = new VBox(lblName, lblCompany, lblWage, lblWeeklySalary);
+        Label lblEmploymentYear = new Label("Employment Year:");
+        VBox labelBox = new VBox(lblName, lblCompany, lblWage, lblWeeklySalary, lblEmploymentYear);
         labelBox.setSpacing(30);
         this.add(labelBox, 1, 1);
 
-        VBox textVBox = new VBox(txfName, txfCompany, txfWage, txfWeeklySalary);
+        VBox textVBox = new VBox(txfName, txfCompany, txfWage, txfWeeklySalary, txfEmploymentYear);
         textVBox.setSpacing(20);
         this.add(textVBox, 2, 1);
 
@@ -132,10 +134,11 @@ public class EmployeePane extends GridPane {
         if (employee.getCompany() == null) {
             txfCompany.setText("");
             txfWeeklySalary.setText("");
+            txfEmploymentYear.setText("");
         } else {
             txfCompany.setText(employee.getCompany().toString());
             txfWeeklySalary.setText(String.valueOf(employee.getWeeklySalary()));
-
+            txfEmploymentYear.setText(String.valueOf(employee.getEmploymentYear()));
         }
     }
 }

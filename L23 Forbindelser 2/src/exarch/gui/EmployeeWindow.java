@@ -18,6 +18,7 @@ public class EmployeeWindow extends Stage {
     Employee employee;
     private TextField txfName = new TextField();
     private TextField txfWage = new TextField();
+    private TextField txfEmploymentYear = new TextField();
     private CheckBox chbCompany = new CheckBox("Company");
     private ComboBox drpCompany = new ComboBox<Company>();
 
@@ -42,16 +43,21 @@ public class EmployeeWindow extends Stage {
         pane.setVgap(10);
         pane.setGridLinesVisible(false);
 
-        Label lblName = new Label("Name");
+        Label lblName = new Label("Name:");
         pane.add(lblName, 0, 0);
 
         pane.add(txfName, 0, 1);
         txfName.setPrefWidth(200);
 
-        Label lblHours = new Label("Hourly Wage");
+        Label lblHours = new Label("Hourly Wage:");
         pane.add(lblHours, 0, 2);
 
         pane.add(txfWage, 0, 3);
+
+        Label lblEmploymentYear = new Label("Employment Year:");
+        pane.add(lblEmploymentYear, 0, 6);
+        pane.add(txfEmploymentYear, 0, 7);
+        txfEmploymentYear.setDisable(true);
 
         pane.add(chbCompany, 0, 4);
         pane.add(drpCompany, 0, 5);
@@ -62,16 +68,16 @@ public class EmployeeWindow extends Stage {
         chbCompany.setOnAction(event -> checkBoxAction());
 
         Button btnCancel = new Button("Cancel");
-        pane.add(btnCancel, 0, 6);
+        pane.add(btnCancel, 0, 8);
         GridPane.setHalignment(btnCancel, HPos.LEFT);
         btnCancel.setOnAction(event -> this.cancelAction());
 
         Button btnOK = new Button("OK");
-        pane.add(btnOK, 0, 6);
+        pane.add(btnOK, 0, 8);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
 
-        pane.add(lblError, 0, 7);
+        pane.add(lblError, 0, 9);
         lblError.setStyle("-fx-text-fill: red");
 
         if (employee != null) {
@@ -81,6 +87,7 @@ public class EmployeeWindow extends Stage {
                 chbCompany.setSelected(true);
                 drpCompany.getSelectionModel().select(employee.getCompany());
                 drpCompany.setDisable(false);
+                txfEmploymentYear.setDisable(false);
             } else chbCompany.setSelected(false);
         }
     }
@@ -92,8 +99,10 @@ public class EmployeeWindow extends Stage {
     private void checkBoxAction() {
         if (chbCompany.isSelected()) {
             drpCompany.setDisable(false);
+            txfEmploymentYear.setDisable(false);
         } else if (!chbCompany.isSelected()) {
             drpCompany.setDisable(true);
+            txfEmploymentYear.setDisable(true);
         }
     }
 
@@ -131,8 +140,8 @@ public class EmployeeWindow extends Stage {
             // create new employee
             if (chbCompany.isSelected()) {
                 Company company = Controller.getCompanies().get(drpCompany.getSelectionModel().getSelectedIndex());
-                Controller.createEmployee(name, wage, company);
-            } else Controller.createEmployee(name, wage, null);
+                Controller.createEmployee(name, wage, company, Integer.parseInt(txfEmploymentYear.getText()));
+            } else Controller.createEmployee(name, wage, null, -1);
 
         this.hide();
     }
